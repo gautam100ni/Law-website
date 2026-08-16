@@ -55,7 +55,7 @@ const Footer = () => {
                         <Link to="/terms-conditions" className="transition hover:text-[#9b6d16]">Terms & Conditions</Link>
                     </div>
 
-                    <p className="mt-6 text-sm text-stone-600">All rights reserved to Akhawat Law Firm</p>
+                    <p className="mt-6 text-sm text-stone-600">All right reserved to Akhawat Law Firm</p>
                 </div>
             </div>
         </footer>

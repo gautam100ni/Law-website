@@ -52,7 +52,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="rounded-full bg-[#c9a23b] px-6 py-3 text-sm font-semibold text-stone-950 transition-colors duration-200 ease-out hover:bg-[#b68616]"
+                  className="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-950 transition-colors duration-200 ease-out hover:bg-yellow-500"
                 >
                   INQUIRY NOW
                 </Link>
@@ -184,7 +184,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 to="/contact"
-                className="rounded-full bg-[#c9a23b] px-6 py-3 text-sm font-semibold text-stone-950 transition-colors duration-200 ease-out hover:bg-[#b68616]"
+                className="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-950 transition-colors duration-200 ease-out hover:bg-yellow-500"
               >
                 Contact the Firm
               </Link>

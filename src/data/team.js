@@ -4,10 +4,11 @@ import digvijayPhoto from "../assets/digvijay-singh.jpeg";
 
 export const teamMembers = [
   {
-    id: "vasudeo-charan", name: "Vasudeo Charan", role: "Advocate",
+    id: "vasudeo-charan", name: "Vasudeo Charan", role: "Advocate & Legal Mentor",
+    experience: "22+ Years of Legal Experience",
     initials: "VC",
     image: null, practiceAreas: ["Writ Petitions", "Criminal Law", "Civil Disputes"],
-    bio: "Vasudeo Charan is a renowned lawyer of Rajasthan with 29 years of extensive experience in advocacy. He primarily practises before the Jodhpur Sessions Court and the Rajasthan High Court, handling a wide range of matters including writ petitions, criminal law, and civil disputes. Over nearly three decades of legal practice, Mr. Charan has built a strong reputation for his in-depth knowledge of constitutional and criminal jurisprudence, and is recognized for his sharp litigation strategy and commitment to his clients. His extensive courtroom experience and command over writ, criminal, and civil matters have made him one of the most respected legal practitioners in the region."
+    bio: "Vasudeo Charan is a renowned lawyer of Rajasthan with 22+ years of extensive experience in advocacy. He primarily practises before the Jodhpur Sessions Court and the Rajasthan High Court, handling a wide range of matters including writ petitions, criminal law, and civil disputes. Over more than two decades of legal practice, Mr. Charan has built a strong reputation for his in-depth knowledge of constitutional and criminal jurisprudence, and is recognized for his sharp litigation strategy and commitment to his clients. His extensive courtroom experience and command over writ, criminal, and civil matters have made him one of the most respected legal practitioners in the region."
   },
   {
     id: "digvijay-singh-punayata", name: "Digvijay Singh Punayata",

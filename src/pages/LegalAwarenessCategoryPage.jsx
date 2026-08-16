@@ -37,7 +37,7 @@ export default function LegalAwarenessCategoryPage() {
           <div className="mt-10 border-t border-stone-200 pt-6">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-500">Important</p>
             <p className="mt-2 text-sm leading-7 text-stone-700">This article is general legal information, not case-specific legal advice. For an individual matter, submit an inquiry so the firm can review the relevant facts and documents.</p>
-            <Link to="/contact" className="mt-5 inline-flex rounded-full bg-[#c9a23b] px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-[#b68616]">INQUIRY NOW</Link>
+            <Link to="/contact" className="mt-5 inline-flex rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-yellow-500">INQUIRY NOW</Link>
           </div>
         </Reveal>
 

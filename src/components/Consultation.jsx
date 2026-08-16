@@ -122,7 +122,7 @@ const Consultation = () => {
                         className="w-full border border-gray-300 rounded-md p-2"
                     />
                 </div>
-                <button type="submit" className="w-full bg-gold text-white font-semibold py-2 rounded-md">Submit</button>
+                <button type="submit" className="w-full bg-yellow-400 text-white font-semibold py-2 rounded-md">Submit</button>
             </form>
         </div>
     );
