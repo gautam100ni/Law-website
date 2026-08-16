@@ -6,6 +6,7 @@ import InstagramIcon from "../components/InstagramIcon";
 import { caseTypes } from "../data/caseTypes";
 
 const INSTAGRAM_URL = "https://www.instagram.com/akhawat_law_firm_?igsh=MWsyMTQwOThpZm92Ng==";
+const FIRM_EMAIL = "akhawatlawfirm@gmail.com";
 const WHATSAPP_URL = "https://wa.me/919024806815?text=";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_FILE_TYPES = [
@@ -16,6 +17,7 @@ const ALLOWED_FILE_TYPES = [
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 ];
 const ALLOWED_FILE_EXTENSIONS = ["pdf", "jpg", "jpeg", "png", "doc", "docx"];
+const API_BASE_URL = `${import.meta.env.BASE_URL || "/"}api`;
 
 export default function ContactPage() {
   const [searchParams] = useSearchParams();
@@ -53,7 +55,7 @@ export default function ContactPage() {
     return nextErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -63,22 +65,52 @@ export default function ContactPage() {
       return;
     }
 
-    const message = [
-      "Inquiry",
-      `Full Name: ${form.name.trim()}`,
-      `Phone: ${form.phone.trim()}`,
-      `Email: ${form.email.trim()}`,
-      `State: ${form.state.trim()}`,
-      `City: ${form.city.trim()}`,
-      `Case Type: ${form.practiceArea}`,
-      `Message: ${form.message.trim()}`,
-      attachment
-        ? `Attachment selected: ${attachment.name}. This file is not sent through WhatsApp; please use the firm's secure document-sharing process if available.`
-        : "Attachment selected: None."
-    ].join("\n");
+    setStatus("uploading");
 
-    window.open(`${WHATSAPP_URL}${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    setStatus("ready");
+    let attachmentLine = "Attachment selected: None.";
+
+    try {
+      if (attachment) {
+        const uploadData = new FormData();
+        uploadData.append("attachment", attachment);
+
+        const uploadResponse = await fetch(`${API_BASE_URL}/upload-attachment.php`, {
+          method: "POST",
+          body: uploadData
+        });
+
+        const uploadResult = await uploadResponse.json();
+        if (!uploadResponse.ok || !uploadResult.success || !uploadResult.url) {
+          throw new Error(uploadResult.message || "Attachment upload failed.");
+        }
+
+        attachmentLine = `Attachment: ${uploadResult.url}`;
+      }
+
+      const message = [
+        "Inquiry",
+        `Full Name: ${form.name.trim()}`,
+        `Phone: ${form.phone.trim()}`,
+        `Email: ${form.email.trim()}`,
+        `State: ${form.state.trim()}`,
+        `City: ${form.city.trim()}`,
+        `Case Type: ${form.practiceArea}`,
+        `Message: ${form.message.trim()}`,
+        attachmentLine
+      ].join("\n");
+
+      window.open(`${WHATSAPP_URL}${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      setStatus("ready");
+    } catch (error) {
+      console.error("Attachment upload error:", error);
+      setStatus("error");
+      setErrors((current) => ({
+        ...current,
+        attachment: attachment
+          ? "The attachment could not be uploaded. Please try again."
+          : undefined
+      }));
+    }
   };
 
   const handleAttachmentChange = (event) => {
@@ -141,6 +173,15 @@ export default function ContactPage() {
                   <p className="font-semibold text-stone-900">Phone</p>
                   <a href="tel:+919024806815" className="mt-2 inline-block text-[#9b6d16] hover:text-[#b68616] transition-colors duration-200 ease-out">
                     9024806815
+                  </a>
+                </div>
+                <div>
+                  <p className="font-semibold text-stone-900">Email</p>
+                  <a
+                    href={`mailto:${FIRM_EMAIL}`}
+                    className="mt-2 inline-block text-[#9b6d16] hover:text-[#b68616] transition-colors duration-200 ease-out"
+                  >
+                    {FIRM_EMAIL}
                   </a>
                 </div>
                 <div>
@@ -264,9 +305,15 @@ export default function ContactPage() {
                 INQUIRY NOW
               </button>
 
+              {status === "uploading" && (
+                <p className="mt-4 text-sm leading-7 text-stone-700">
+                  Uploading your attachment securely…
+                </p>
+              )}
+
               {status === "ready" && (
                 <p className="mt-4 text-sm leading-7 text-stone-700">
-                  WhatsApp has been opened with your inquiry details. This frontend does not store or transmit the selected attachment; it has not been sent.
+                  WhatsApp has been opened with your inquiry details. If a file was attached, a secure document link has been included.
                 </p>
               )}
 

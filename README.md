@@ -59,3 +59,6 @@ Contributions are welcome! Please submit a pull request or open an issue for any
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Attachment upload
+The contact form uploads optional PDF/JPG/PNG/DOC/DOCX files to the PHP endpoint in `api/` and sends the returned secure download link in WhatsApp.

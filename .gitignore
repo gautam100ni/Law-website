@@ -3,3 +3,7 @@ dist/
 .env
 .env.*
 !.env.example
+
+.vite/
+private_uploads/
+dist.zip

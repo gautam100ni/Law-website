@@ -37,6 +37,7 @@ const Footer = () => {
                     <ul className="mt-4 space-y-2 text-sm text-stone-700">
                         <li><a href="tel:+919024806815" className="transition hover:text-[#9b6d16]">9024806815</a></li>
                         <li>Jodhpur, Rajasthan</li>
+                        <li><a href="mailto:akhawatlawfirm@gmail.com" className="transition hover:text-[#9b6d16]">akhawatlawfirm@gmail.com</a></li>
                     </ul>
 
                     <a
