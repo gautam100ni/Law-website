@@ -24,6 +24,8 @@ const Footer = () => {
                         <li><Link to="/about" className="transition hover:text-[#9b6d16]">About</Link></li>
                         <li><Link to="/services" className="transition hover:text-[#9b6d16]">Services</Link></li>
                         <li><Link to="/team" className="transition hover:text-[#9b6d16]">Team</Link></li>
+                        <li><Link to="/legal-awareness" className="transition hover:text-[#9b6d16]">Legal Awareness</Link></li>
+                        <li><Link to="/blog" className="transition hover:text-[#9b6d16]">Blog</Link></li>
                         <li><Link to="/contact" className="transition hover:text-[#9b6d16]">Contact</Link></li>
                     </ul>
                 </div>
@@ -41,7 +43,7 @@ const Footer = () => {
                     <a
                         href={INSTAGRAM_URL}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         aria-label="Visit Akhawat Law Firm on Instagram"
                         className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-stone-700 transition hover:text-[#9b6d16]"
                     >
@@ -54,7 +56,7 @@ const Footer = () => {
                         <Link to="/terms-conditions" className="transition hover:text-[#9b6d16]">Terms & Conditions</Link>
                     </div>
 
-                    <p className="mt-6 text-sm text-stone-600">© 2026 Akhawat Law Firm</p>
+                    <p className="mt-6 text-sm text-stone-600">All rights reserved to Akhawat Law Firm</p>
                 </div>
             </div>
         </footer>

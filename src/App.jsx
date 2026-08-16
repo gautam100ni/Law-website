@@ -10,6 +10,9 @@ import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import BlogPage from "./pages/BlogPage";
+import LegalAwarenessPage from "./pages/LegalAwarenessPage";
+import LegalAwarenessCategoryPage from "./pages/LegalAwarenessCategoryPage";
 import "./index.css";
 
 function App() {
@@ -65,6 +68,9 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/legal-awareness" element={<LegalAwarenessPage />} />
+            <Route path="/legal-awareness/:slug" element={<LegalAwarenessCategoryPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
           </Routes>

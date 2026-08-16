@@ -1,70 +1,22 @@
-import React from 'react';
 import SeoHead from "../components/SeoHead";
 import { teamMembers } from "../data/team";
 import BrandImage from "../components/BrandImage";
 import Reveal from "../components/Reveal";
-import abhishekPhoto from "../assets/abhishek-akhawat-cropped.jpg";
+
+const abhishekBio = "With a strong foundation in legal research, constitutional law, litigation strategy, and persuasive advocacy, I provide strategic and effective legal representation across complex civil, criminal, constitutional, and technology-related matters.";
 
 export default function TeamPage() {
   return (
     <>
       <SeoHead
-        title="Our Team"
-        description="Meet the professionals at Akhawat Law Firm."
+        title="Our Lawyers"
+        description="Meet the advocates and legal professionals at Akhawat Law Firm."
       />
 
       <section className="section-shell py-12 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal delay={80} duration={800} withScale className="rounded-[2rem] border border-stone-200 bg-[#f4ebda] p-3 shadow-[0_16px_45px_rgba(15,23,42,0.05)]">
-            <BrandImage
-              src={abhishekPhoto}
-              alt="Advocate Abhishek Akhawat"
-              className="w-full h-auto rounded-[1.5rem]"
-              fallbackClassName="flex w-full items-center justify-center rounded-[1.5rem] bg-white"
-            />
-          </Reveal>
-
-          <Reveal delay={160} className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
-            <div>
-              <p className="eyebrow">Team</p>
-              <h1 className="mt-3 font-serif text-4xl text-stone-900 sm:text-5xl">
-                Advocate Abhishek Akhawat
-              </h1>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#9b6d16]">
-                Managing Director, Akhawat Law Firm
-              </p>
-
-              <div className="gold-line mt-6" />
-
-              <p className="mt-6 text-base leading-8 text-stone-800">
-                With a strong foundation in legal research, constitutional law, litigation strategy, and persuasive advocacy, I provide strategic and effective legal representation across complex civil, criminal, constitutional, and technology-related matters.
-              </p>
-
-              <p className="mt-4 text-base leading-8 text-stone-800">
-                My areas of practice include Cyber Law & Cyber Crime, Custodial Death Matters, Habeas Corpus and Protection Petitions, Civil & Criminal Writs, Civil Revisions, Bail and Anticipatory Bail, FIR Quashing, Criminal Appeals & Revisions, MACT Claims, Property & Land Disputes, Commercial & Recovery Matters, Consumer Disputes, Matrimonial & Family Matters, and other civil and criminal litigation.
-              </p>
-
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                {teamMembers.map((member, index) => (
-                  <Reveal key={member.name} delay={index * 120} className="h-full">
-                    <div className="h-full rounded-[1.4rem] border border-stone-200 bg-[#fbf7ee] p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(15,23,42,0.08)]">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-semibold text-stone-900">
-                        {member.image ? (
-                          <img src={member.image} alt="" className="h-full w-full rounded-full object-cover" />
-                        ) : (
-                          member.initials
-                        )}
-                      </div>
-                      <h2 className="mt-4 font-serif text-xl text-stone-900">{member.name}</h2>
-                      <p className="mt-2 text-sm font-medium uppercase tracking-[0.25em] text-[#9b6d16]">
-                        {member.role}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+        <Reveal className="max-w-3xl"><p className="eyebrow">Our Lawyers</p><h1 className="mt-3 font-serif text-4xl text-stone-900 sm:text-5xl">Find the right advocate for your matter.</h1><p className="mt-5 text-lg leading-8 text-stone-700">Meet the advocates and legal professionals of Akhawat Law Firm.</p></Reveal>
+        <div className="mt-10 grid gap-7 lg:grid-cols-2">
+          {teamMembers.map((member, index) => <Reveal key={member.id} delay={index * 90} className="h-full"><article id={member.id} className="h-full border border-stone-200 bg-white p-6 shadow-sm sm:p-8"><div className="flex items-start gap-5">{member.image ? <BrandImage src={member.image} alt={member.name} className="h-20 w-20 shrink-0 rounded-full object-cover object-top" fallbackClassName="h-20 w-20 shrink-0 rounded-full bg-[#f4e8c7]" /> : <div aria-label={`${member.name} initials`} className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#f4e8c7] text-lg font-semibold text-[#9b6d16]">{member.initials}</div>}<div><h2 className="font-serif text-2xl text-stone-900">{member.name}</h2><p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-[#9b6d16]">{member.role}</p></div></div><p className="mt-6 text-sm leading-7 text-stone-700">{member.bio || abhishekBio}</p><div className="mt-6 border-t border-stone-200 pt-4"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">Relevant Practice Areas</p><p className="mt-2 text-sm leading-6 text-stone-800">{member.practiceAreas.join(" · ")}</p></div></article></Reveal>)}
         </div>
       </section>
     </>

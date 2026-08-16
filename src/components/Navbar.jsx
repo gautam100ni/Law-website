@@ -7,7 +7,9 @@ const links = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Practice Areas", to: "/services" },
-  { label: "Team", to: "/team" },
+  { label: "Our Lawyers", to: "/team" },
+  { label: "Legal Awareness", to: "/legal-awareness" },
+  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" }
 ];
 
@@ -16,16 +18,17 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200/80 bg-[#f7f2e8]/95 backdrop-blur">
-      <div className="section-shell flex items-center justify-between py-4">
+      <div className="section-shell flex items-center justify-between py-3">
         <NavLink to="/" className="flex items-center gap-3">
           <BrandImage
             src={logo}
             alt="Akhawat Law Firm logo"
-            className="h-10 w-auto object-contain"
-            fallbackClassName="flex h-10 w-10 items-center justify-center"
+            className="h-14 w-auto object-contain sm:h-16"
+            fallbackClassName="flex h-14 w-14 items-center justify-center sm:h-16 sm:w-16"
           />
-          <span className="font-serif text-lg uppercase tracking-[0.28em] text-stone-900">
-            Akhawat
+          <span className="flex flex-col font-serif uppercase text-stone-900">
+            <span className="text-lg leading-none tracking-[0.24em] sm:text-xl">Akhawat</span>
+            <span className="mt-1 text-[0.58rem] leading-none tracking-[0.28em] text-[#9b6d16]">Law Firm</span>
           </span>
         </NavLink>
 
