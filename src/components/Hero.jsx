@@ -25,7 +25,7 @@ const Hero = () => {
                             to="/contact"
                             className="inline-flex items-center gap-2 rounded-full border border-[#c79b2a] bg-[#c79b2a] px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-[#b7871a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c79b2a]"
                         >
-                            BOOK A CONSULTATION
+                            INQUIRY NOW
                             <ArrowRight size={18} />
                         </Link>
 

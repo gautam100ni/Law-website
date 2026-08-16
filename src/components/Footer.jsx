@@ -23,8 +23,8 @@ const Footer = () => {
                         <li><Link to="/" className="transition hover:text-[#9b6d16]">Home</Link></li>
                         <li><Link to="/about" className="transition hover:text-[#9b6d16]">About</Link></li>
                         <li><Link to="/services" className="transition hover:text-[#9b6d16]">Services</Link></li>
-                        <li><Link to="/team" className="transition hover:text-[#9b6d16]">Team</Link></li>
-                        <li><Link to="/legal-awareness" className="transition hover:text-[#9b6d16]">Legal Awareness</Link></li>
+                        <li><Link to="/contact" className="transition hover:text-[#9b6d16]">Find a Lawyer</Link></li>
+                        <li><Link to="/legal-awareness" className="transition hover:text-[#9b6d16]">Legal Advice</Link></li>
                         <li><Link to="/blog" className="transition hover:text-[#9b6d16]">Blog</Link></li>
                         <li><Link to="/contact" className="transition hover:text-[#9b6d16]">Contact</Link></li>
                     </ul>
@@ -36,7 +36,6 @@ const Footer = () => {
                     </p>
                     <ul className="mt-4 space-y-2 text-sm text-stone-700">
                         <li><a href="tel:+919024806815" className="transition hover:text-[#9b6d16]">9024806815</a></li>
-                        <li><a href="mailto:akhawatlawfirm@gmail.com" className="transition hover:text-[#9b6d16]">akhawatlawfirm@gmail.com</a></li>
                         <li>Jodhpur, Rajasthan</li>
                     </ul>
 

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import SeoHead from "../components/SeoHead";
 import Reveal from "../components/Reveal";
 import InstagramIcon from "../components/InstagramIcon";
+import { caseTypes } from "../data/caseTypes";
 
 const INSTAGRAM_URL = "https://www.instagram.com/akhawat_law_firm_?igsh=MWsyMTQwOThpZm92Ng==";
 const MAP_URL = "https://maps.app.goo.gl/SKg6u2DfhNDb6hiB7?g_st=ic";
@@ -11,6 +13,7 @@ const ALLOWED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png", "appli
 const ALLOWED_FILE_EXTENSIONS = ["pdf", "jpg", "jpeg", "png", "doc", "docx"];
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -24,6 +27,13 @@ export default function ContactPage() {
 
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
+  const selectedCaseType = searchParams.get("caseType") || "";
+
+  useEffect(() => {
+    if (selectedCaseType && caseTypes.includes(selectedCaseType)) {
+      setForm((current) => ({ ...current, practiceArea: selectedCaseType }));
+    }
+  }, [selectedCaseType]);
 
   const validate = () => {
     const nextErrors = {};
@@ -50,15 +60,15 @@ export default function ContactPage() {
     }
 
     const message = [
-      "Consultation Enquiry",
+      "Inquiry",
       `Full Name: ${form.name.trim()}`,
       `Phone: ${form.phone.trim()}`,
       `Email: ${form.email.trim()}`,
       `State: ${form.state.trim()}`,
       `City: ${form.city.trim()}`,
-      `Matter / Practice Area: ${form.practiceArea}`,
+      `Case Type: ${form.practiceArea}`,
       `Message: ${form.message.trim()}`,
-      attachment ? `Attachment selected: ${attachment.name}. Please share this document separately through WhatsApp.` : "Attachment selected: None."
+      attachment ? `Attachment selected: ${attachment.name}. This file is not sent through WhatsApp; please use the firm's secure document-sharing process if available.` : "Attachment selected: None."
     ].join("\n");
     window.open(`${WHATSAPP_URL}${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     setStatus("ready");
@@ -87,7 +97,7 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow">Contact</p>
               <h1 className="mt-3 font-serif text-4xl text-stone-900 sm:text-5xl">
-                Reach us for legal guidance and consultation.
+                Reach us for legal guidance and inquiry.
               </h1>
 
               <div className="mt-8 space-y-6 text-sm leading-7 text-stone-700">
@@ -99,12 +109,6 @@ export default function ContactPage() {
                   <p className="font-semibold text-stone-900">Phone</p>
                   <a href="tel:+919024806815" className="mt-2 inline-block text-[#9b6d16] hover:text-[#b68616] transition-colors duration-200 ease-out">
                     9024806815
-                  </a>
-                </div>
-                <div>
-                  <p className="font-semibold text-stone-900">Email</p>
-                  <a href="mailto:akhawatlawfirm@gmail.com" className="mt-2 inline-block text-[#9b6d16] hover:text-[#b68616] transition-colors duration-200 ease-out">
-                    akhawatlawfirm@gmail.com
                   </a>
                 </div>
                 <div>
@@ -170,19 +174,14 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-semibold text-stone-800">Matter</label>
+                <label className="mb-2 block text-sm font-semibold text-stone-800">Matter / Case Type</label>
                 <select
                   value={form.practiceArea}
                   onChange={(e) => setForm({ ...form, practiceArea: e.target.value })}
                   className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#c9a23b]"
                 >
                   <option value="">Select a matter</option>
-                  <option value="Civil Law">Civil Law</option>
-                  <option value="Criminal Law">Criminal Law</option>
-                  <option value="Constitutional Law">Constitutional Law</option>
-                  <option value="Cyber Law & Cyber Crime">Cyber Law & Cyber Crime</option>
-                  <option value="Family / Matrimonial Law">Family / Matrimonial Law</option>
-                  <option value="Property & Land Disputes">Property & Land Disputes</option>
+                  {caseTypes.map((caseType) => <option key={caseType} value={caseType}>{caseType}</option>)}
                 </select>
                 {errors.practiceArea && <p className="mt-2 text-sm text-red-600">{errors.practiceArea}</p>}
               </div>
@@ -227,7 +226,7 @@ export default function ContactPage() {
 
             {status === "ready" && (
               <p className="mt-4 text-sm leading-7 text-stone-700">
-                WhatsApp has been opened with your enquiry details. This frontend does not store or transmit any selected attachment; share it separately through WhatsApp.
+                WhatsApp has been opened with your inquiry details. This frontend does not store or transmit the selected attachment; it has not been sent.
               </p>
             )}
 

@@ -54,7 +54,7 @@ export default function Home() {
                   to="/contact"
                   className="rounded-full bg-[#c9a23b] px-6 py-3 text-sm font-semibold text-stone-950 transition-colors duration-200 ease-out hover:bg-[#b68616]"
                 >
-                  Book a Consultation
+                  INQUIRY NOW
                 </Link>
                 <Link
                   to="/services"

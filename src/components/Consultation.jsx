@@ -50,7 +50,7 @@ const Consultation = () => {
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
-            <h2 className="text-2xl font-serif mb-4">Book a Consultation</h2>
+            <h2 className="text-2xl font-serif mb-4">INQUIRY NOW</h2>
             {formStatus === 'success' && <p className="text-green-500">Your consultation request has been submitted successfully!</p>}
             {formStatus === 'error' && <p className="text-red-500">There was an error submitting your request. Please try again.</p>}
             <form onSubmit={handleSubmit}>
